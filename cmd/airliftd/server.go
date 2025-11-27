@@ -178,6 +178,10 @@ func main() {
 
 	r := gas.New()
 
+	r.Get("/health", func(g *gas.Gas) (int, gas.Outputter) {
+		return 200, out.JSON(map[string]string{"status": "ok"})
+	})
+
 	if gas.Env.TLSPort > 0 {
 		r.Use(redirectTLS)
 	}
@@ -567,10 +571,8 @@ func postFile(g *gas.Gas) (int, gas.Outputter) {
 	if host == "" {
 		host = g.Request.Host
 	}
-	if conf.AppendExt {
-		hash += filepath.Ext(filename)
-	}
-	return 201, out.JSON(&Resp{URL: path.Join(host, hash)})
+	urlPath := path.Join(host, hash, path.Base(filename))
+	return 201, out.JSON(&Resp{URL: urlPath})
 }
 
 func deleteFile(g *gas.Gas) (int, gas.Outputter) {

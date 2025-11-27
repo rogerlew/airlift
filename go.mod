@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/alecthomas/chroma v0.8.2
 	github.com/dlclark/regexp2 v1.4.0 // indirect
-	github.com/pkg/errors v0.9.1
+	github.com/google/uuid v1.6.0
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	golang.org/x/crypto v0.0.0-20210317152858-513c2a44f670
 	golang.org/x/image v0.0.0-20210220032944-ac19c3e999fb
@@ -14,3 +14,9 @@ require (
 	ktkr.us/pkg/gas v0.1.0
 	ktkr.us/pkg/vfs v0.1.0
 )
+
+replace ktkr.us/pkg/fmtutil => github.com/moshee/fmtutil v0.1.0
+
+replace ktkr.us/pkg/gas => github.com/moshee/gas v0.1.0
+
+replace ktkr.us/pkg/vfs => github.com/moshee/vfs v0.1.0

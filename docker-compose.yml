@@ -1,0 +1,11 @@
+services:
+  airlift:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: airlift:local
+    restart: unless-stopped
+    ports:
+      - "60606:60606"
+    volumes:
+      - ./data/airliftd:/root/.airliftd

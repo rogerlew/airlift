@@ -9,7 +9,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"ktkr.us/pkg/airlift/shorthash"
+	"github.com/google/uuid"
+
 	"ktkr.us/pkg/gas/auth"
 )
 
@@ -90,7 +91,7 @@ func (c *Config) Refresh() {
 }
 
 func (c *Config) ProcessHash(buf []byte) string {
-	return shorthash.Make(buf, c.HashLen)
+	return uuid.NewString()
 }
 
 // SetPass updates the config with the new password hash, generating a new
